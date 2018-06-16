@@ -8,6 +8,8 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     await req.client.postUser({publicKey: req.identity.pubKey});
+    let user = await req.client.getUser();
+    res.send(user);
   }
   catch(error){
     return res.status(403).send("invalid certificate");

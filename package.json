@@ -11,6 +11,8 @@
     "test": "node test.js"
   },
   "dependencies": {
+    "atob": "^2.1.1",
+    "cors": "^2.8.4",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
     "health-ledger-network": "github:SGSE18/health-ledger-network"
