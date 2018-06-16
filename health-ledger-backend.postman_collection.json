@@ -1,0 +1,283 @@
+{
+	"info": {
+		"_postman_id": "7962c3d8-6502-4768-bb9c-72ae2e0c3f49",
+		"name": "health-ledger-backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_patient}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/user/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Crypto",
+								"value": "{{identity_patient}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/user/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"user",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "requests",
+			"description": "",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_patient}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/request/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_patient}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"pubkey_patient\",\n\t\"request\": { \"id\": \"requestId\", \"requester\": \"Dein Arzt\", \"requesterPublicKey\": \"4242\", \"note\": \"alles\", \"duration\": 12, \"treatment\": true, \"attestation\": true, \"recipe\": true}\n}"
+						},
+						"url": {
+							"raw": "{{host}}/request/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_patient}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"pubkey_patient\",\n\t\"requestId\": \"requestId\",\n\t\"result\": {\"rejected\": false, \"reason\": \"aber nur gucken, nicht anfassen\", \"treatment\": []}\n}"
+						},
+						"url": {
+							"raw": "{{host}}/request/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"request",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "treatments",
+			"description": "",
+			"item": [
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_patient}}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{host}}/treatment/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"treatment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_arzt}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"pubkey_patient\",\n\t\"treatment\": {\"id\": \"treatmentId\", \"category\": \"Krank\", \"diagnose\": \"Grippe\", \"prescription\":{ \"drug\": \"abc\", \"patient_name\": \"Mr. Nice\", \"doctor_name\": \"Dr IQ\", \"until_date\": \"\", \"note\": \"Nicht alle auf einmal essen\", \"redeemed\": true} , \"attestation\": null }\n}"
+						},
+						"url": {
+							"raw": "{{host}}/treatment/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"treatment",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e05b3bd9-6f97-4d3a-8e64-f4c72f541c6c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "61808fa0-b97f-4c96-8c5a-2a925ef897a8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "4953ab13-57c7-4249-9423-dcdcca65383e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "587c7876-fb3a-4f3f-a34c-985eb1179483",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "1faa57e6-72c5-424a-83d2-080ff5db6812",
+			"key": "host",
+			"value": "https://health-ledger.herokuapp.com/",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "edc2985b-ff91-4e3a-8af4-cfb4444d1b8d",
+			"key": "identity_patient",
+			"value": "{\"fabricCert\": { \"username\":\"lpaso_patient\", \"mspid\":\"MainOrgMSP\", \"key\":\"-----BEGIN PRIVATE KEY-----\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgyCUCp5YYmz5mz2iP\\nNbhdAgCSQGiH90qY0DwKteRiVyuhRANCAAR1qIvrdrkJep4bfPywIjwBWui2NxAo\\nCSDXC4xYgWipggMimncIvnv/kqjQmfQB5QOOtjD9YND7/eS5f17Vjjhk\\n-----END PRIVATE KEY-----\", \"cert\":\"-----BEGIN CERTIFICATE-----\\nMIICKzCCAdGgAwIBAgIRAL8SF4v9wYoqtwM1hETpqOYwCgYIKoZIzj0EAwIweDEL\\nMAkGA1UEBhMCREUxDDAKBgNVBAgTA05SVzESMBAGA1UEBxMJQmllbGVmZWxkMSEw\\nHwYDVQQKExhtYWlub3JnLmhlYWx0aC1sZWRnZXIuZGUxJDAiBgNVBAMTG2NhLm1h\\naW5vcmcuaGVhbHRoLWxlZGdlci5kZTAgFw0xODA2MTYxMTEwNDBaGA8yMTE4MDUy\\nMzExMTA0MFowZTETMBEGA1UEAwwKTGVubnkgUGFzbzELMAkGA1UEBhMCREUxDDAK\\nBgNVBAgMA05SVzEhMB8GA1UECgwYbWFpbm9yZy5oZWFsdGgtbGVkZ2VyLmRlMRAw\\nDgYDVQQLDAdQYXRpZW50MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEdaiL63a5\\nCXqeG3z8sCI8AVrotjcQKAkg1wuMWIFoqYIDIpp3CL57/5Ko0Jn0AeUDjrYw/WDQ\\n+/3kuX9e1Y44ZKNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYD\\nVR0jBCQwIoAgZtgEVzqDE54+row60NKXoVreZIAYRFU1klbDSJZuACowCgYIKoZI\\nzj0EAwIDSAAwRQIhAOZpZxAhafgQgrZKg+oXUKmV7hGLE4wEMu3dAgUud1vhAiB6\\nc7M6++RfQVxChqKPqW9iYlKHUziyKCCWr8yDtTBtSw==\\n-----END CERTIFICATE-----\" },\"pubKey\":\"pubkey_patient\"}",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "4f1c85a5-407f-461d-a66c-59cfa90aa484",
+			"key": "identity_arzt",
+			"value": "{\"fabricCert\": { \"username\":\"hmayer_arzt\", \"mspid\":\"MainOrgMSP\", \"key\":\"-----BEGIN PRIVATE KEY-----\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgdENEUc8VNU8Rtnt/\\n8UJegi/9takwUL7xV/4whFee1XOhRANCAAT6EkpV4TJp/FGLMJkD2pMW/nIOgHJr\\nrhgvDAMl7LLwV53ytnkL7IikpuhFMVnbxRsY3TIfHY0R0RtbK9uTgKt1\\n-----END PRIVATE KEY-----\", \"cert\":\"-----BEGIN CERTIFICATE-----\\nMIICKTCCAc+gAwIBAgIQETsYEYihkJYJEJVLKpvkczAKBggqhkjOPQQDAjB4MQsw\\nCQYDVQQGEwJERTEMMAoGA1UECBMDTlJXMRIwEAYDVQQHEwlCaWVsZWZlbGQxITAf\\nBgNVBAoTGG1haW5vcmcuaGVhbHRoLWxlZGdlci5kZTEkMCIGA1UEAxMbY2EubWFp\\nbm9yZy5oZWFsdGgtbGVkZ2VyLmRlMCAXDTE4MDYxNjExMTMzOFoYDzIxMTgwNTIz\\nMTExMzM4WjBkMRUwEwYDVQQDDAxEci4gSC4gTWF5ZXIxCzAJBgNVBAYTAkRFMQww\\nCgYDVQQIDANOUlcxITAfBgNVBAoMGG1haW5vcmcuaGVhbHRoLWxlZGdlci5kZTEN\\nMAsGA1UECwwEQXJ6dDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPoSSlXhMmn8\\nUYswmQPakxb+cg6AcmuuGC8MAyXssvBXnfK2eQvsiKSm6EUxWdvFGxjdMh8djRHR\\nG1sr25OAq3WjTTBLMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMCsGA1Ud\\nIwQkMCKAIGbYBFc6gxOePq6MOtDSl6Fa3mSAGERVNZJWw0iWbgAqMAoGCCqGSM49\\nBAMCA0gAMEUCIFcGG1L/3fhfaUu/YW9VD9wOw8zh7rtPqqxhgrbQE7byAiEA7/R0\\nsFlKzLW8y+ygtsIDNQnM+RCLH3GucimR2+3uocU=\\n-----END CERTIFICATE-----\"}, \"pubKey\":\"pubkey_arzt\"}",
+			"type": "string",
+			"description": ""
+		}
+	]
+}
