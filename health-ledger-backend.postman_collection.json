@@ -1,13 +1,13 @@
 {
 	"info": {
-		"_postman_id": "7962c3d8-6502-4768-bb9c-72ae2e0c3f49",
+		"_postman_id": "5be6626a-10a3-461d-bd4e-cd5e4146417d",
 		"name": "health-ledger-backend",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "user",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "get",
@@ -19,7 +19,10 @@
 								"value": "{{identity_patient}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/user/",
 							"host": [
@@ -43,7 +46,10 @@
 								"value": "{{identity_patient}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/user/",
 							"host": [
@@ -61,7 +67,7 @@
 		},
 		{
 			"name": "requests",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "get",
@@ -73,7 +79,10 @@
 								"value": "{{identity_patient}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/request/",
 							"host": [
@@ -153,7 +162,7 @@
 		},
 		{
 			"name": "treatments",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "get",
@@ -165,7 +174,10 @@
 								"value": "{{identity_patient}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "{{host}}/treatment/",
 							"host": [
@@ -204,6 +216,38 @@
 							],
 							"path": [
 								"treatment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "redeem",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "crypto",
+								"value": "{{identity_apotheke}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"publicKey\": \"pubkey_patient\",\n\t\"treatmentId\": \"1\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/treatment/redeem/",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"treatment",
+								"redeem",
 								""
 							]
 						}
@@ -259,23 +303,30 @@
 	],
 	"variable": [
 		{
-			"id": "1faa57e6-72c5-424a-83d2-080ff5db6812",
+			"id": "a3fc8e60-3c00-4d42-801e-d0043266f8b9",
 			"key": "host",
-			"value": "https://health-ledger.herokuapp.com/",
+			"value": "http://localhost:5000",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "edc2985b-ff91-4e3a-8af4-cfb4444d1b8d",
+			"id": "fa55f2e3-f9ea-46d3-83d9-eb600d32c00f",
 			"key": "identity_patient",
-			"value": "{\"fabricCert\": { \"username\":\"lpaso_patient\", \"mspid\":\"MainOrgMSP\", \"key\":\"-----BEGIN PRIVATE KEY-----\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgyCUCp5YYmz5mz2iP\\nNbhdAgCSQGiH90qY0DwKteRiVyuhRANCAAR1qIvrdrkJep4bfPywIjwBWui2NxAo\\nCSDXC4xYgWipggMimncIvnv/kqjQmfQB5QOOtjD9YND7/eS5f17Vjjhk\\n-----END PRIVATE KEY-----\", \"cert\":\"-----BEGIN CERTIFICATE-----\\nMIICKzCCAdGgAwIBAgIRAL8SF4v9wYoqtwM1hETpqOYwCgYIKoZIzj0EAwIweDEL\\nMAkGA1UEBhMCREUxDDAKBgNVBAgTA05SVzESMBAGA1UEBxMJQmllbGVmZWxkMSEw\\nHwYDVQQKExhtYWlub3JnLmhlYWx0aC1sZWRnZXIuZGUxJDAiBgNVBAMTG2NhLm1h\\naW5vcmcuaGVhbHRoLWxlZGdlci5kZTAgFw0xODA2MTYxMTEwNDBaGA8yMTE4MDUy\\nMzExMTA0MFowZTETMBEGA1UEAwwKTGVubnkgUGFzbzELMAkGA1UEBhMCREUxDDAK\\nBgNVBAgMA05SVzEhMB8GA1UECgwYbWFpbm9yZy5oZWFsdGgtbGVkZ2VyLmRlMRAw\\nDgYDVQQLDAdQYXRpZW50MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEdaiL63a5\\nCXqeG3z8sCI8AVrotjcQKAkg1wuMWIFoqYIDIpp3CL57/5Ko0Jn0AeUDjrYw/WDQ\\n+/3kuX9e1Y44ZKNNMEswDgYDVR0PAQH/BAQDAgeAMAwGA1UdEwEB/wQCMAAwKwYD\\nVR0jBCQwIoAgZtgEVzqDE54+row60NKXoVreZIAYRFU1klbDSJZuACowCgYIKoZI\\nzj0EAwIDSAAwRQIhAOZpZxAhafgQgrZKg+oXUKmV7hGLE4wEMu3dAgUud1vhAiB6\\nc7M6++RfQVxChqKPqW9iYlKHUziyKCCWr8yDtTBtSw==\\n-----END CERTIFICATE-----\" },\"pubKey\":\"pubkey_patient\"}",
+			"value": "eyJmYWJyaWNDZXJ0IjogeyAidXNlcm5hbWUiOiJscGFzb19wYXRpZW50IiwgIm1zcGlkIjoiTWFpbk9yZ01TUCIsICJrZXkiOiItLS0tLUJFR0lOIFBSSVZBVEUgS0VZLS0tLS1cbk1JR0hBZ0VBTUJNR0J5cUdTTTQ5QWdFR0NDcUdTTTQ5QXdFSEJHMHdhd0lCQVFRZ3lDVUNwNVlZbXo1bXoyaVBcbk5iaGRBZ0NTUUdpSDkwcVkwRHdLdGVSaVZ5dWhSQU5DQUFSMXFJdnJkcmtKZXA0YmZQeXdJandCV3VpMk54QW9cbkNTRFhDNHhZZ1dpcGdnTWltbmNJdm52L2txalFtZlFCNVFPT3RqRDlZTkQ3L2VTNWYxN1ZqamhrXG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tIiwgImNlcnQiOiItLS0tLUJFR0lOIENFUlRJRklDQVRFLS0tLS1cbk1JSUNLekNDQWRHZ0F3SUJBZ0lSQUw4U0Y0djl3WW9xdHdNMWhFVHBxT1l3Q2dZSUtvWkl6ajBFQXdJd2VERUxcbk1Ba0dBMVVFQmhNQ1JFVXhEREFLQmdOVkJBZ1RBMDVTVnpFU01CQUdBMVVFQnhNSlFtbGxiR1ZtWld4a01TRXdcbkh3WURWUVFLRXhodFlXbHViM0puTG1obFlXeDBhQzFzWldSblpYSXVaR1V4SkRBaUJnTlZCQU1URzJOaExtMWhcbmFXNXZjbWN1YUdWaGJIUm9MV3hsWkdkbGNpNWtaVEFnRncweE9EQTJNVFl4TVRFd05EQmFHQTh5TVRFNE1EVXlcbk16RXhNVEEwTUZvd1pURVRNQkVHQTFVRUF3d0tUR1Z1Ym5rZ1VHRnpiekVMTUFrR0ExVUVCaE1DUkVVeEREQUtcbkJnTlZCQWdNQTA1U1Z6RWhNQjhHQTFVRUNnd1liV0ZwYm05eVp5NW9aV0ZzZEdndGJHVmtaMlZ5TG1SbE1SQXdcbkRnWURWUVFMREFkUVlYUnBaVzUwTUZrd0V3WUhLb1pJemowQ0FRWUlLb1pJemowREFRY0RRZ0FFZGFpTDYzYTVcbkNYcWVHM3o4c0NJOEFWcm90amNRS0FrZzF3dU1XSUZvcVlJRElwcDNDTDU3LzVLbzBKbjBBZVVEanJZdy9XRFFcbisvM2t1WDllMVk0NFpLTk5NRXN3RGdZRFZSMFBBUUgvQkFRREFnZUFNQXdHQTFVZEV3RUIvd1FDTUFBd0t3WURcblZSMGpCQ1F3SW9BZ1p0Z0VWenFERTU0K3JvdzYwTktYb1ZyZVpJQVlSRlUxa2xiRFNKWnVBQ293Q2dZSUtvWklcbnpqMEVBd0lEU0FBd1JRSWhBT1pwWnhBaGFmZ1FnclpLZytvWFVLbVY3aEdMRTR3RU11M2RBZ1V1ZDF2aEFpQjZcbmM3TTYrK1JmUVZ4Q2hxS1BxVzlpWWxLSFV6aXlLQ0NXcjh5RHRUQnRTdz09XG4tLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tIiB9LCJwdWJLZXkiOiJwdWJrZXlfcGF0aWVudCJ9",
 			"type": "string",
 			"description": ""
 		},
 		{
-			"id": "4f1c85a5-407f-461d-a66c-59cfa90aa484",
+			"id": "d45adc09-2998-4bc4-9849-b4b92b449bf4",
 			"key": "identity_arzt",
-			"value": "{\"fabricCert\": { \"username\":\"hmayer_arzt\", \"mspid\":\"MainOrgMSP\", \"key\":\"-----BEGIN PRIVATE KEY-----\\nMIGHAgEAMBMGByqGSM49AgEGCCqGSM49AwEHBG0wawIBAQQgdENEUc8VNU8Rtnt/\\n8UJegi/9takwUL7xV/4whFee1XOhRANCAAT6EkpV4TJp/FGLMJkD2pMW/nIOgHJr\\nrhgvDAMl7LLwV53ytnkL7IikpuhFMVnbxRsY3TIfHY0R0RtbK9uTgKt1\\n-----END PRIVATE KEY-----\", \"cert\":\"-----BEGIN CERTIFICATE-----\\nMIICKTCCAc+gAwIBAgIQETsYEYihkJYJEJVLKpvkczAKBggqhkjOPQQDAjB4MQsw\\nCQYDVQQGEwJERTEMMAoGA1UECBMDTlJXMRIwEAYDVQQHEwlCaWVsZWZlbGQxITAf\\nBgNVBAoTGG1haW5vcmcuaGVhbHRoLWxlZGdlci5kZTEkMCIGA1UEAxMbY2EubWFp\\nbm9yZy5oZWFsdGgtbGVkZ2VyLmRlMCAXDTE4MDYxNjExMTMzOFoYDzIxMTgwNTIz\\nMTExMzM4WjBkMRUwEwYDVQQDDAxEci4gSC4gTWF5ZXIxCzAJBgNVBAYTAkRFMQww\\nCgYDVQQIDANOUlcxITAfBgNVBAoMGG1haW5vcmcuaGVhbHRoLWxlZGdlci5kZTEN\\nMAsGA1UECwwEQXJ6dDBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABPoSSlXhMmn8\\nUYswmQPakxb+cg6AcmuuGC8MAyXssvBXnfK2eQvsiKSm6EUxWdvFGxjdMh8djRHR\\nG1sr25OAq3WjTTBLMA4GA1UdDwEB/wQEAwIHgDAMBgNVHRMBAf8EAjAAMCsGA1Ud\\nIwQkMCKAIGbYBFc6gxOePq6MOtDSl6Fa3mSAGERVNZJWw0iWbgAqMAoGCCqGSM49\\nBAMCA0gAMEUCIFcGG1L/3fhfaUu/YW9VD9wOw8zh7rtPqqxhgrbQE7byAiEA7/R0\\nsFlKzLW8y+ygtsIDNQnM+RCLH3GucimR2+3uocU=\\n-----END CERTIFICATE-----\"}, \"pubKey\":\"pubkey_arzt\"}",
+			"value": "eyJmYWJyaWNDZXJ0IjogeyAidXNlcm5hbWUiOiJobWF5ZXJfYXJ6dCIsICJtc3BpZCI6Ik1haW5PcmdNU1AiLCAia2V5IjoiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUdIQWdFQU1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhCRzB3YXdJQkFRUWdkRU5FVWM4Vk5VOFJ0bnQvXG44VUplZ2kvOXRha3dVTDd4Vi80d2hGZWUxWE9oUkFOQ0FBVDZFa3BWNFRKcC9GR0xNSmtEMnBNVy9uSU9nSEpyXG5yaGd2REFNbDdMTHdWNTN5dG5rTDdJaWtwdWhGTVZuYnhSc1kzVElmSFkwUjBSdGJLOXVUZ0t0MVxuLS0tLS1FTkQgUFJJVkFURSBLRVktLS0tLSIsICJjZXJ0IjoiLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tXG5NSUlDS1RDQ0FjK2dBd0lCQWdJUUVUc1lFWWloa0pZSkVKVkxLcHZrY3pBS0JnZ3Foa2pPUFFRREFqQjRNUXN3XG5DUVlEVlFRR0V3SkVSVEVNTUFvR0ExVUVDQk1EVGxKWE1SSXdFQVlEVlFRSEV3bENhV1ZzWldabGJHUXhJVEFmXG5CZ05WQkFvVEdHMWhhVzV2Y21jdWFHVmhiSFJvTFd4bFpHZGxjaTVrWlRFa01DSUdBMVVFQXhNYlkyRXViV0ZwXG5ibTl5Wnk1b1pXRnNkR2d0YkdWa1oyVnlMbVJsTUNBWERURTRNRFl4TmpFeE1UTXpPRm9ZRHpJeE1UZ3dOVEl6XG5NVEV4TXpNNFdqQmtNUlV3RXdZRFZRUUREQXhFY2k0Z1NDNGdUV0Y1WlhJeEN6QUpCZ05WQkFZVEFrUkZNUXd3XG5DZ1lEVlFRSURBTk9VbGN4SVRBZkJnTlZCQW9NR0cxaGFXNXZjbWN1YUdWaGJIUm9MV3hsWkdkbGNpNWtaVEVOXG5NQXNHQTFVRUN3d0VRWEo2ZERCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBQlBvU1NsWGhNbW44XG5VWXN3bVFQYWt4YitjZzZBY211dUdDOE1BeVhzc3ZCWG5mSzJlUXZzaUtTbTZFVXhXZHZGR3hqZE1oOGRqUkhSXG5HMXNyMjVPQXEzV2pUVEJMTUE0R0ExVWREd0VCL3dRRUF3SUhnREFNQmdOVkhSTUJBZjhFQWpBQU1Dc0dBMVVkXG5Jd1FrTUNLQUlHYllCRmM2Z3hPZVBxNk1PdERTbDZGYTNtU0FHRVJWTlpKV3cwaVdiZ0FxTUFvR0NDcUdTTTQ5XG5CQU1DQTBnQU1FVUNJRmNHRzFMLzNmaGZhVXUvWVc5VkQ5d093OHpoN3J0UHFxeGhncmJRRTdieUFpRUE3L1IwXG5zRmxLekxXOHkreWd0c0lETlFuTStSQ0xIM0d1Y2ltUjIrM3VvY1U9XG4tLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tIn0sICJwdWJLZXkiOiJwdWJrZXlfYXJ6dCJ9",
+			"type": "string",
+			"description": ""
+		},
+		{
+			"id": "7d2a1233-c4f8-43bf-9102-dc089e27926d",
+			"key": "identity_apotheke",
+			"value": "eyJmYWJyaWNDZXJ0IjogeyJ1c2VybmFtZSI6ImFlc2N1bGFwX2Fwb3RoZWtlIiwibXNwaWQiOiJNYWluT3JnTVNQIiwia2V5IjoiLS0tLS1CRUdJTiBQUklWQVRFIEtFWS0tLS0tXG5NSUdIQWdFQU1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhCRzB3YXdJQkFRUWdqd0JsV2hEM21GRlRWWndzXG5hT3VpWWNSbVFQbnYxTlR2dERtSjZEL0NsbU9oUkFOQ0FBUUFvWXpwWER1eXVkRVZ2UC9DVmlkeEJLUy9JRjZWXG5sR01YMUxRd1VWajk1d1RjcFdYNGJjK1lWN0JIMldDVC9lTVEzbkR0cjFrSUEvWTBnL25xNWNacVxuLS0tLS1FTkQgUFJJVkFURSBLRVktLS0tLSIsDQogICJjZXJ0IjoiLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tXG5NSUlDTVRDQ0FkaWdBd0lCQWdJUU1xNXMyK2d5aWFDaTBGZnVwRElTVXpBS0JnZ3Foa2pPUFFRREFqQjRNUXN3XG5DUVlEVlFRR0V3SkVSVEVNTUFvR0ExVUVDQk1EVGxKWE1SSXdFQVlEVlFRSEV3bENhV1ZzWldabGJHUXhJVEFmXG5CZ05WQkFvVEdHMWhhVzV2Y21jdWFHVmhiSFJvTFd4bFpHZGxjaTVrWlRFa01DSUdBMVVFQXhNYlkyRXViV0ZwXG5ibTl5Wnk1b1pXRnNkR2d0YkdWa1oyVnlMbVJsTUNBWERURTRNRFl4TmpFeE1UUXdObG9ZRHpJeE1UZ3dOVEl6XG5NVEV4TkRBMldqQnRNUm93R0FZRFZRUUREQkZCWlhOamRXeGhjQ0JCY0c5MGFHVnJaVEVMTUFrR0ExVUVCaE1DXG5SRVV4RERBS0JnTlZCQWdNQTA1U1Z6RWhNQjhHQTFVRUNnd1liV0ZwYm05eVp5NW9aV0ZzZEdndGJHVmtaMlZ5XG5MbVJsTVJFd0R3WURWUVFMREFoQmNHOTBhR1ZyWlRCWk1CTUdCeXFHU000OUFnRUdDQ3FHU000OUF3RUhBMElBXG5CQUNoak9sY083SzUwUlc4LzhKV0ozRUVwTDhnWHBXVVl4ZlV0REJSV1AzbkJOeWxaZmh0ejVoWHNFZlpZSlA5XG40eERlY08ydldRZ0Q5alNEK2VybHhtcWpUVEJMTUE0R0ExVWREd0VCL3dRRUF3SUhnREFNQmdOVkhSTUJBZjhFXG5BakFBTUNzR0ExVWRJd1FrTUNLQUlHYllCRmM2Z3hPZVBxNk1PdERTbDZGYTNtU0FHRVJWTlpKV3cwaVdiZ0FxXG5NQW9HQ0NxR1NNNDlCQU1DQTBjQU1FUUNJRVl2TmRYb01MZm5tQ1F6TWFZSWRKd2s0c3FqVDY1S3dVdXBzVlhJXG5mWUd4QWlCRlBzQWZHRTl2ODdkMDVJVjJHTUo5TGVNMGt0UWFvcm1PZEtuVWIvTGRzdz09XG4tLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tIg0KfSwicHViS2V5IjoicHVia2V5X2Fwb3RoZWtlIn0",
 			"type": "string",
 			"description": ""
 		}
