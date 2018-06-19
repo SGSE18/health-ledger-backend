@@ -1,8 +1,12 @@
 var router = require('express').Router();
 
 router.get('/', async (req, res) => {
-  let user = await req.client.getUser();
-  res.send(user);
+  try {
+    let user = await req.client.getUser();
+    res.send(user);
+  } catch(err){
+    res.status(500).send(err);
+  }
 });
 
 router.post('/', async (req, res) => {
@@ -10,9 +14,8 @@ router.post('/', async (req, res) => {
     await req.client.postUser({publicKey: req.identity.pubKey});
     let user = await req.client.getUser();
     res.send(user);
-  }
-  catch(error){
-    return res.status(403).send("invalid certificate");
+  } catch(err){
+    res.status(500).send(err);
   }
 
   res.status(200).send();
