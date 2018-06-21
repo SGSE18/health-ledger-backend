@@ -15,7 +15,7 @@
     "cors": "^2.8.4",
     "ejs": "^2.5.6",
     "express": "^4.15.2",
-    "health-ledger-network": "github:SGSE18/health-ledger-network"
+    "health-ledger-network": "github:SGSE18/health-ledger-network#1.0.1"
   },
   "devDependencies": {
     "request": "^2.81.0",
